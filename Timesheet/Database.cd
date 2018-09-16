@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Makh.Timesheet.TimesheetDataSet">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Makh.Timesheet.TimesheetDataSet.UserRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Makh.Timesheet.TimesheetDataSet.WorkDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Makh.Timesheet.TimesheetDataSet.GroupsHierarchyViewRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Makh.Timesheet.TimesheetDataSet.UserRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="Makh.Timesheet.TimesheetDataSet.GroupsHierarchyViewRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="Makh.Timesheet.TimesheetDataSet.GroupRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Makh.Timesheet.TimesheetDataSet.WorkRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="Makh.Timesheet.TimesheetDataSet.UserRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="Makh.Timesheet.TimesheetDataSet.GroupsHierarchyViewRowChangeEvent" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="Makh.Timesheet.TimesheetDataSet.WorkRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="Makh.Timesheet.TimesheetDataSet.GroupRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Makh.Timesheet.TimesheetDataSet.UserDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Makh.Timesheet.TimesheetDataSet.WorkRow" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Makh.Timesheet.TimesheetDataSet.GroupsHierarchyViewDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="Makh.Timesheet.TimesheetDataSet.GroupRowChangeEventHandler" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+      <Class Name="Makh.Timesheet.TimesheetDataSet.GroupDataTable" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAgBAEQAAwAQAAJABAAIQCSAAAgCUBgAAAoIFAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Makh.Timesheet.DatabaseProvider">
+    <Position X="2.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAABAEAAAAAAAAAAAAAAAAAhACAAAAAIQAABAAAAA=</HashCode>
+      <FileName>DatabaseProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

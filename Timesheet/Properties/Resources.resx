@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddingRestrictionOfMotafareqehGroup" xml:space="preserve">
+    <value>امکان اضافه کردن گروه در بالای گروه متفرقه و یا به عنوان فرزند آن وجود ندارد فقط می توان در پایین گروه متفرقه گروه اضافه کرد</value>
+  </data>
+  <data name="DBFileIsNotSelected" xml:space="preserve">
+    <value>ابتدا باید یک فایل پایگاه داده انتخاب شود سپس اتصال برسی گردد</value>
+  </data>
+  <data name="FilenameCantBeNullOrEmpty" xml:space="preserve">
+    <value>نام فایل نمی تواند خالی باشد</value>
+  </data>
+  <data name="GroupNameCanntBeEmpty" xml:space="preserve">
+    <value>عنوان گروه نمی تواند خالی یا فاصله باشد</value>
+  </data>
+  <data name="GroupTitleColumnName" xml:space="preserve">
+    <value>عنوان گروه</value>
+  </data>
+  <data name="GroupTitleColumnWidth" xml:space="preserve">
+    <value>600</value>
+  </data>
+  <data name="HierarchyLevel01Color" xml:space="preserve">
+    <value>#005c99</value>
+  </data>
+  <data name="HierarchyLevel02Color" xml:space="preserve">
+    <value>#006bb3</value>
+  </data>
+  <data name="HierarchyLevel03Color" xml:space="preserve">
+    <value>#007acc</value>
+  </data>
+  <data name="HierarchyLevel04Color" xml:space="preserve">
+    <value>#008ae6</value>
+  </data>
+  <data name="HierarchyLevel05Color" xml:space="preserve">
+    <value>#0099ff</value>
+  </data>
+  <data name="HierarchyLevel06Color" xml:space="preserve">
+    <value>#1aa3ff</value>
+  </data>
+  <data name="HierarchyLevel07Color" xml:space="preserve">
+    <value>#33adff</value>
+  </data>
+  <data name="HierarchyLevel08Color" xml:space="preserve">
+    <value>#4db8ff</value>
+  </data>
+  <data name="HierarchyLevel09Color" xml:space="preserve">
+    <value>#66c2ff</value>
+  </data>
+  <data name="HierarchyLevel10Color" xml:space="preserve">
+    <value>#80ccff</value>
+  </data>
+  <data name="HierarchyLevel11Color" xml:space="preserve">
+    <value>#99d6ff</value>
+  </data>
+  <data name="HierarchyLevel12Color" xml:space="preserve">
+    <value>#b3e0ff</value>
+  </data>
+  <data name="HierarchyLevel13Color" xml:space="preserve">
+    <value>#ccebff</value>
+  </data>
+  <data name="HierarchyLevel14Color" xml:space="preserve">
+    <value>#e6f5ff</value>
+  </data>
+  <data name="HierarchyLevel15Color" xml:space="preserve">
+    <value>#ffffff</value>
+  </data>
+  <data name="MsgBoxCaption" xml:space="preserve">
+    <value>Timesheet</value>
+  </data>
+  <data name="NoRowSelected" xml:space="preserve">
+    <value>برای اضافه کردن گروه باید حداقل یک سطر را انتخاب شود و سپس گزینه مناسب جهت اضافه شدن گروه زده شود</value>
+  </data>
+  <data name="PlzTypeGroupName" xml:space="preserve">
+    <value>لطفا، یک عنوان برای گروه جدید وارد کنید:</value>
+  </data>
+  <data name="RowNumColumnName" xml:space="preserve">
+    <value>ردیف</value>
+  </data>
+  <data name="RowNumColumnWidth" xml:space="preserve">
+    <value>50</value>
+  </data>
+  <data name="TestConnectionSucceeded" xml:space="preserve">
+    <value>اتصال با موفقیت بررسی شد</value>
+  </data>
+</root>
