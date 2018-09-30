@@ -470,22 +470,22 @@ namespace Makh.Timesheet
             
         }
 
-        private string GetFilterExpression(string text)
-        {
-            DataRow[] results = timesheetDataSet
-                .GroupsHierarchyView.Select(string.Format("Title LIKE '*{0}*'"
-                    ,text));
+        //private string GetFilterExpression(string text)
+        //{
+        //    DataRow[] results = timesheetDataSet
+        //        .GroupsHierarchyView.Select(string.Format("Title LIKE '*{0}*'"
+        //            ,text));
 
-            string result = string.Empty;
+        //    string result = string.Empty;
 
-            if (results == null)
-                return result;
+        //    if (results == null)
+        //        return result;
 
-            string or = " OR ";
-            string expression = "ID";
+        //    string or = " OR ";
+        //    string expression = "ID";
 
 
 
-        }
+        //}
     }
 }
