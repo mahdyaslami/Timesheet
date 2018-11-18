@@ -413,7 +413,7 @@ namespace Makh.Timesheet {
             
             private global::System.Data.DataColumn columnParentSequence;
             
-            private global::System.Data.DataColumn columnOrderSequence;
+            private global::System.Data.DataColumn columnOrderNumber;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -482,9 +482,9 @@ namespace Makh.Timesheet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OrderSequenceColumn {
+            public global::System.Data.DataColumn OrderNumberColumn {
                 get {
-                    return this.columnOrderSequence;
+                    return this.columnOrderNumber;
                 }
             }
             
@@ -525,14 +525,14 @@ namespace Makh.Timesheet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GroupRow AddGroupRow(string Title, GroupRow parentGroupRowByFK_Group_Group, string ParentSequence, double OrderSequence) {
+            public GroupRow AddGroupRow(string Title, GroupRow parentGroupRowByFK_Group_Group, string ParentSequence, double OrderNumber) {
                 GroupRow rowGroupRow = ((GroupRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Title,
                         null,
                         ParentSequence,
-                        OrderSequence};
+                        OrderNumber};
                 if ((parentGroupRowByFK_Group_Group != null)) {
                     columnValuesArray[2] = parentGroupRowByFK_Group_Group[0];
                 }
@@ -569,7 +569,7 @@ namespace Makh.Timesheet {
                 this.columnTitle = base.Columns["Title"];
                 this.columnParentID = base.Columns["ParentID"];
                 this.columnParentSequence = base.Columns["ParentSequence"];
-                this.columnOrderSequence = base.Columns["OrderSequence"];
+                this.columnOrderNumber = base.Columns["OrderNumber"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -583,8 +583,8 @@ namespace Makh.Timesheet {
                 base.Columns.Add(this.columnParentID);
                 this.columnParentSequence = new global::System.Data.DataColumn("ParentSequence", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnParentSequence);
-                this.columnOrderSequence = new global::System.Data.DataColumn("OrderSequence", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOrderSequence);
+                this.columnOrderNumber = new global::System.Data.DataColumn("OrderNumber", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrderNumber);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1358,7 +1358,7 @@ namespace Makh.Timesheet {
             
             private global::System.Data.DataColumn columnParentID;
             
-            private global::System.Data.DataColumn columnOrderSequence;
+            private global::System.Data.DataColumn columnOrderNumber;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1435,9 +1435,9 @@ namespace Makh.Timesheet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OrderSequenceColumn {
+            public global::System.Data.DataColumn OrderNumberColumn {
                 get {
-                    return this.columnOrderSequence;
+                    return this.columnOrderNumber;
                 }
             }
             
@@ -1478,7 +1478,7 @@ namespace Makh.Timesheet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GroupsHierarchyViewRow AddGroupsHierarchyViewRow(long RowNum, string Title, long HierarchyLevel, int ParentID, double OrderSequence) {
+            public GroupsHierarchyViewRow AddGroupsHierarchyViewRow(long RowNum, string Title, long HierarchyLevel, int ParentID, double OrderNumber) {
                 GroupsHierarchyViewRow rowGroupsHierarchyViewRow = ((GroupsHierarchyViewRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1486,7 +1486,7 @@ namespace Makh.Timesheet {
                         Title,
                         HierarchyLevel,
                         ParentID,
-                        OrderSequence};
+                        OrderNumber};
                 rowGroupsHierarchyViewRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGroupsHierarchyViewRow);
                 return rowGroupsHierarchyViewRow;
@@ -1521,7 +1521,7 @@ namespace Makh.Timesheet {
                 this.columnTitle = base.Columns["Title"];
                 this.columnHierarchyLevel = base.Columns["HierarchyLevel"];
                 this.columnParentID = base.Columns["ParentID"];
-                this.columnOrderSequence = base.Columns["OrderSequence"];
+                this.columnOrderNumber = base.Columns["OrderNumber"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1537,8 +1537,8 @@ namespace Makh.Timesheet {
                 base.Columns.Add(this.columnHierarchyLevel);
                 this.columnParentID = new global::System.Data.DataColumn("ParentID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnParentID);
-                this.columnOrderSequence = new global::System.Data.DataColumn("OrderSequence", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOrderSequence);
+                this.columnOrderNumber = new global::System.Data.DataColumn("OrderNumber", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrderNumber);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1746,17 +1746,17 @@ namespace Makh.Timesheet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double OrderSequence {
+            public double OrderNumber {
                 get {
                     try {
-                        return ((double)(this[this.tableGroup.OrderSequenceColumn]));
+                        return ((double)(this[this.tableGroup.OrderNumberColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OrderSequence\' in table \'Group\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'OrderNumber\' in table \'Group\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGroup.OrderSequenceColumn] = value;
+                    this[this.tableGroup.OrderNumberColumn] = value;
                 }
             }
             
@@ -1797,14 +1797,14 @@ namespace Makh.Timesheet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOrderSequenceNull() {
-                return this.IsNull(this.tableGroup.OrderSequenceColumn);
+            public bool IsOrderNumberNull() {
+                return this.IsNull(this.tableGroup.OrderNumberColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOrderSequenceNull() {
-                this[this.tableGroup.OrderSequenceColumn] = global::System.Convert.DBNull;
+            public void SetOrderNumberNull() {
+                this[this.tableGroup.OrderNumberColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2123,17 +2123,17 @@ namespace Makh.Timesheet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double OrderSequence {
+            public double OrderNumber {
                 get {
                     try {
-                        return ((double)(this[this.tableGroupsHierarchyView.OrderSequenceColumn]));
+                        return ((double)(this[this.tableGroupsHierarchyView.OrderNumberColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OrderSequence\' in table \'GroupsHierarchyView\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'OrderNumber\' in table \'GroupsHierarchyView\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGroupsHierarchyView.OrderSequenceColumn] = value;
+                    this[this.tableGroupsHierarchyView.OrderNumberColumn] = value;
                 }
             }
             
@@ -2187,14 +2187,14 @@ namespace Makh.Timesheet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOrderSequenceNull() {
-                return this.IsNull(this.tableGroupsHierarchyView.OrderSequenceColumn);
+            public bool IsOrderNumberNull() {
+                return this.IsNull(this.tableGroupsHierarchyView.OrderNumberColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOrderSequenceNull() {
-                this[this.tableGroupsHierarchyView.OrderSequenceColumn] = global::System.Convert.DBNull;
+            public void SetOrderNumberNull() {
+                this[this.tableGroupsHierarchyView.OrderNumberColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2463,45 +2463,45 @@ namespace Makh.Timesheet.TimesheetDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Title", "Title");
             tableMapping.ColumnMappings.Add("ParentID", "ParentID");
             tableMapping.ColumnMappings.Add("ParentSequence", "ParentSequence");
-            tableMapping.ColumnMappings.Add("OrderSequence", "OrderSequence");
+            tableMapping.ColumnMappings.Add("OrderNumber", "OrderNumber");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Group] WHERE (([ID] = @Original_ID) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ((@IsNull_ParentID = 1 AND [ParentID] IS NULL) OR ([ParentID] = @Original_ParentID)) AND ((@IsNull_OrderSequence = 1 AND [OrderSequence] IS NULL) OR ([OrderSequence] = @Original_OrderSequence)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Group] WHERE (([ID] = @Original_ID) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ((@IsNull_ParentID = 1 AND [ParentID] IS NULL) OR ([ParentID] = @Original_ParentID)) AND ((@IsNull_OrderNumber = 1 AND [OrderNumber] IS NULL) OR ([OrderNumber] = @Original_OrderNumber)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Title", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ParentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParentID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ParentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderSequence", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderSequence", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderSequence", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderSequence", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderNumber", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [Group] ([Title], [ParentID], [ParentSequence], [OrderSequence]) VALU" +
-                "ES (@Title, @ParentID, @ParentSequence, @OrderSequence);\r\nSELECT ID, Title, Pare" +
-                "ntID, ParentSequence, OrderSequence FROM [Group] WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Group] ([Title], [ParentID], [ParentSequence], [OrderNumber]) VALUES" +
+                " (@Title, @ParentID, @ParentSequence, @OrderNumber);\r\nSELECT ID, Title, ParentID" +
+                ", ParentSequence, OrderNumber FROM [Group] WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ParentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ParentSequence", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParentSequence", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderSequence", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderSequence", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderNumber", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [Group] SET [Title] = @Title, [ParentID] = @ParentID, [ParentSequence] = @ParentSequence, [OrderSequence] = @OrderSequence WHERE (([ID] = @Original_ID) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ((@IsNull_ParentID = 1 AND [ParentID] IS NULL) OR ([ParentID] = @Original_ParentID)) AND ((@IsNull_OrderSequence = 1 AND [OrderSequence] IS NULL) OR ([OrderSequence] = @Original_OrderSequence)));
-SELECT ID, Title, ParentID, ParentSequence, OrderSequence FROM [Group] WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Group] SET [Title] = @Title, [ParentID] = @ParentID, [ParentSequence] = @ParentSequence, [OrderNumber] = @OrderNumber WHERE (([ID] = @Original_ID) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ((@IsNull_ParentID = 1 AND [ParentID] IS NULL) OR ([ParentID] = @Original_ParentID)) AND ((@IsNull_OrderNumber = 1 AND [OrderNumber] IS NULL) OR ([OrderNumber] = @Original_OrderNumber)));
+SELECT ID, Title, ParentID, ParentSequence, OrderNumber FROM [Group] WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ParentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ParentSequence", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParentSequence", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderSequence", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderSequence", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderNumber", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Title", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ParentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParentID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ParentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderSequence", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderSequence", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderSequence", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderSequence", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderNumber", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -2518,7 +2518,7 @@ SELECT ID, Title, ParentID, ParentSequence, OrderSequence FROM [Group] WHERE (ID
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, Title, ParentID, ParentSequence, OrderSequence FROM [Group]";
+            this._commandCollection[0].CommandText = "SELECT ID, Title, ParentID, ParentSequence, OrderNumber FROM [Group]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2579,7 +2579,7 @@ SELECT ID, Title, ParentID, ParentSequence, OrderSequence FROM [Group] WHERE (ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, string Original_Title, global::System.Nullable<int> Original_ParentID, global::System.Nullable<double> Original_OrderSequence) {
+        public virtual int Delete(int Original_ID, string Original_Title, global::System.Nullable<int> Original_ParentID, global::System.Nullable<double> Original_OrderNumber) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             if ((Original_Title == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -2597,9 +2597,9 @@ SELECT ID, Title, ParentID, ParentSequence, OrderSequence FROM [Group] WHERE (ID
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_OrderSequence.HasValue == true)) {
+            if ((Original_OrderNumber.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(Original_OrderSequence.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(Original_OrderNumber.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
@@ -2625,7 +2625,7 @@ SELECT ID, Title, ParentID, ParentSequence, OrderSequence FROM [Group] WHERE (ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Title, global::System.Nullable<int> ParentID, string ParentSequence, global::System.Nullable<double> OrderSequence) {
+        public virtual int Insert(string Title, global::System.Nullable<int> ParentID, string ParentSequence, global::System.Nullable<double> OrderNumber) {
             if ((Title == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -2644,8 +2644,8 @@ SELECT ID, Title, ParentID, ParentSequence, OrderSequence FROM [Group] WHERE (ID
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(ParentSequence));
             }
-            if ((OrderSequence.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((double)(OrderSequence.Value));
+            if ((OrderNumber.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((double)(OrderNumber.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -2670,7 +2670,7 @@ SELECT ID, Title, ParentID, ParentSequence, OrderSequence FROM [Group] WHERE (ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Title, global::System.Nullable<int> ParentID, string ParentSequence, global::System.Nullable<double> OrderSequence, int Original_ID, string Original_Title, global::System.Nullable<int> Original_ParentID, global::System.Nullable<double> Original_OrderSequence, int ID) {
+        public virtual int Update(string Title, global::System.Nullable<int> ParentID, string ParentSequence, global::System.Nullable<double> OrderNumber, int Original_ID, string Original_Title, global::System.Nullable<int> Original_ParentID, global::System.Nullable<double> Original_OrderNumber, int ID) {
             if ((Title == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -2689,8 +2689,8 @@ SELECT ID, Title, ParentID, ParentSequence, OrderSequence FROM [Group] WHERE (ID
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(ParentSequence));
             }
-            if ((OrderSequence.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(OrderSequence.Value));
+            if ((OrderNumber.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(OrderNumber.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -2712,9 +2712,9 @@ SELECT ID, Title, ParentID, ParentSequence, OrderSequence FROM [Group] WHERE (ID
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_OrderSequence.HasValue == true)) {
+            if ((Original_OrderNumber.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((double)(Original_OrderSequence.Value));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((double)(Original_OrderNumber.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
@@ -2741,8 +2741,8 @@ SELECT ID, Title, ParentID, ParentSequence, OrderSequence FROM [Group] WHERE (ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Title, global::System.Nullable<int> ParentID, string ParentSequence, global::System.Nullable<double> OrderSequence, int Original_ID, string Original_Title, global::System.Nullable<int> Original_ParentID, global::System.Nullable<double> Original_OrderSequence) {
-            return this.Update(Title, ParentID, ParentSequence, OrderSequence, Original_ID, Original_Title, Original_ParentID, Original_OrderSequence, Original_ID);
+        public virtual int Update(string Title, global::System.Nullable<int> ParentID, string ParentSequence, global::System.Nullable<double> OrderNumber, int Original_ID, string Original_Title, global::System.Nullable<int> Original_ParentID, global::System.Nullable<double> Original_OrderNumber) {
+            return this.Update(Title, ParentID, ParentSequence, OrderNumber, Original_ID, Original_Title, Original_ParentID, Original_OrderNumber, Original_ID);
         }
     }
     
@@ -3582,7 +3582,7 @@ SELECT ID, StartTime, EndTime, Description, GroupID, UserID FROM Work WHERE (ID 
             tableMapping.ColumnMappings.Add("Title", "Title");
             tableMapping.ColumnMappings.Add("HierarchyLevel", "HierarchyLevel");
             tableMapping.ColumnMappings.Add("ParentID", "ParentID");
-            tableMapping.ColumnMappings.Add("OrderSequence", "OrderSequence");
+            tableMapping.ColumnMappings.Add("OrderNumber", "OrderNumber");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3599,8 +3599,8 @@ SELECT ID, StartTime, EndTime, Description, GroupID, UserID FROM Work WHERE (ID 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, RowNum, Title, HierarchyLevel, ParentID, OrderSequence FROM GroupsHier" +
-                "archyView";
+            this._commandCollection[0].CommandText = "SELECT ID, RowNum, Title, HierarchyLevel, ParentID, OrderNumber FROM GroupsHierar" +
+                "chyView";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

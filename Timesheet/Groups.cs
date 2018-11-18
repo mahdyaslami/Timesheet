@@ -85,13 +85,21 @@ namespace Makh.Timesheet
                 .Visible = false;
 
             groupsDataGridView
-                .Columns[timesheetDataSet.GroupsHierarchyView.OrderSequenceColumn.ColumnName]
+                .Columns[timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
                 .Visible = false;
 
             groupsDataGridView
                 .Columns[timesheetDataSet.GroupsHierarchyView.ParentIDColumn.ColumnName]
                 .Visible = false;
 
+            SetGroupDataGridViewColor();
+        }
+
+        /// <summary>
+        /// رنگ سطر های گرید گروه ها رابراساس سطحی که دارند تنظیم می کند
+        /// </summary>
+        private void SetGroupDataGridViewColor()
+        {
             int level;
             foreach (DataGridViewRow r in groupsDataGridView.Rows)
             {
@@ -263,12 +271,12 @@ namespace Makh.Timesheet
                             GetParentRowOfNewItem(addGroupOption);
 
             // 4- رشته ترتیب را می گیرد
-            double orderSequence =
-                GetOrderSequenceOfNewItem(addGroupOption);
+            double orderNumber =
+                GetOrderNumberOfNewItem(addGroupOption);
 
             // 5- گروه را اضافه می کند
             TimesheetDataSet.GroupRow currentRow = timesheetDataSet.Group
-                .AddGroupRow(title, parent, parent == null ? " " : parent.ParentSequence, orderSequence);
+                .AddGroupRow(title, parent, parent == null ? string.Empty : parent.ParentSequence, orderNumber);
             DatabaseProvider.SaveChanges(timesheetDataSet);
 
             // 6- رشته پدران را می گیرد
@@ -297,7 +305,7 @@ namespace Makh.Timesheet
         /// </summary>
         /// <param name="addGroupOption">شیوه اضافه کردن گروه جدید</param>
         /// <returns>رشته ترتیب را برای سطری که می خواهید اضافه کنید بر می گرداند</returns>
-        private double GetOrderSequenceOfNewItem(AddGroupOption addGroupOption)
+        private double GetOrderNumberOfNewItem(AddGroupOption addGroupOption)
         {
             double min = GetMinimumOrder(addGroupOption);
             double max = GetMaximumOrder(addGroupOption);
@@ -324,7 +332,7 @@ namespace Makh.Timesheet
                 if (preIndex >= 0)
                 {
                     return double.Parse(groupsDataGridView.Rows[preIndex]
-                        .Cells[timesheetDataSet.GroupsHierarchyView.OrderSequenceColumn.ColumnName]
+                        .Cells[timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
                         .Value.ToString());
                 }
                 else
@@ -340,12 +348,12 @@ namespace Makh.Timesheet
                 {
                     return double.Parse(groupsDataGridView
                         .Rows[groupsDataGridView.Rows.Count - 1]
-                        .Cells[timesheetDataSet.GroupsHierarchyView.OrderSequenceColumn.ColumnName]
+                        .Cells[timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
                         .Value.ToString());
                 }
 
                 return double.Parse(groupsDataGridView.Rows[nextIndex - 1]
-                    .Cells[timesheetDataSet.GroupsHierarchyView.OrderSequenceColumn.ColumnName]
+                    .Cells[timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
                     .Value.ToString());
             }
         }
@@ -367,7 +375,7 @@ namespace Makh.Timesheet
             if (addGroupOption == AddGroupOption.AddToTop)
             {
                 return double.Parse(groupsDataGridView.Rows[selectedIndex]
-                    .Cells[timesheetDataSet.GroupsHierarchyView.OrderSequenceColumn.ColumnName]
+                    .Cells[timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
                     .Value.ToString());
             }
             else
@@ -380,7 +388,7 @@ namespace Makh.Timesheet
                 }
 
                 return double.Parse(groupsDataGridView.Rows[nextIndex]
-                    .Cells[timesheetDataSet.GroupsHierarchyView.OrderSequenceColumn.ColumnName]
+                    .Cells[timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
                     .Value.ToString());
             }
         }
@@ -450,6 +458,7 @@ namespace Makh.Timesheet
             }
             return null;
         }
+
         private void addTopButton_Click(object sender, EventArgs e)
         {
             AddButtonClick(AddGroupOption.AddToTop);
@@ -467,7 +476,10 @@ namespace Makh.Timesheet
 
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
-            
+            groupsBindingSource.Filter = string.Format("Title LIKE '*{0}*'"
+                , searchTextBox.Text);
+
+            SetGroupDataGridViewColor();
         }
 
         //private string GetFilterExpression(string text)
@@ -483,8 +495,6 @@ namespace Makh.Timesheet
 
         //    string or = " OR ";
         //    string expression = "ID";
-
-
 
         //}
     }

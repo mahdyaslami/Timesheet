@@ -86,7 +86,7 @@ namespace Makh.Timesheet
         {
             get
             {
-                return inputTextBox.Text;
+                return EqualizePersianString(inputTextBox.Text);
             }
         }
 
@@ -108,6 +108,18 @@ namespace Makh.Timesheet
         {
             inputTextBox.Text = string.Empty;
             this.Close();
+        }
+
+        /// <summary>
+        /// یک متن را می گیرید و اگر داخل آن ی و ک عربی به کار برده شده باشد آن را به فارسی تغییر می دهد و بر می گرداند
+        /// </summary>
+        /// <param name="str">مقداری که حاوی ی و ک عربی است</param>
+        /// <returns>مقداری که ی و ک عربی آن به فارسی تغییر پیدا کرده است</returns>
+        public string EqualizePersianString(string str)
+        {
+            // select nchar(1610) as arabic, nchar(1740) as persian - > ی
+            // select nchar(1603) as arabic, nchar(1705) as persian - > ک
+            return str.Replace("ي", "ی").Replace("ك", "ک"); ;
         }
     }
 }
