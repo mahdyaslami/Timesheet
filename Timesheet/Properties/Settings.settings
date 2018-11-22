@@ -31,11 +31,14 @@
     <Setting Name="MinimunOrderForGroup" Type="System.Double" Scope="Application">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="IsNullExperssion" Type="System.String" Scope="User">
-      <Value Profile="(Default)"> IS NULL</Value>
+    <Setting Name="IsNullExperssion" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0} IS NULL</Value>
     </Setting>
-    <Setting Name="IsEqualExperssion" Type="System.String" Scope="User">
-      <Value Profile="(Default)"> = {0}</Value>
+    <Setting Name="IsEqualExperssion" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0} = {1}</Value>
+    </Setting>
+    <Setting Name="IsLikeExperssion" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0} LIKE '*{1}*'</Value>
     </Setting>
   </Settings>
 </SettingsFile>

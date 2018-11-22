@@ -1350,8 +1350,6 @@ namespace Makh.Timesheet {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnRowNum;
-            
             private global::System.Data.DataColumn columnTitle;
             
             private global::System.Data.DataColumn columnHierarchyLevel;
@@ -1359,6 +1357,8 @@ namespace Makh.Timesheet {
             private global::System.Data.DataColumn columnParentID;
             
             private global::System.Data.DataColumn columnOrderNumber;
+            
+            private global::System.Data.DataColumn columnRowNumber;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1403,14 +1403,6 @@ namespace Makh.Timesheet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RowNumColumn {
-                get {
-                    return this.columnRowNum;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn TitleColumn {
                 get {
                     return this.columnTitle;
@@ -1438,6 +1430,14 @@ namespace Makh.Timesheet {
             public global::System.Data.DataColumn OrderNumberColumn {
                 get {
                     return this.columnOrderNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RowNumberColumn {
+                get {
+                    return this.columnRowNumber;
                 }
             }
             
@@ -1478,15 +1478,15 @@ namespace Makh.Timesheet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GroupsHierarchyViewRow AddGroupsHierarchyViewRow(long RowNum, string Title, long HierarchyLevel, int ParentID, double OrderNumber) {
+            public GroupsHierarchyViewRow AddGroupsHierarchyViewRow(string Title, long HierarchyLevel, int ParentID, double OrderNumber, long RowNumber) {
                 GroupsHierarchyViewRow rowGroupsHierarchyViewRow = ((GroupsHierarchyViewRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        RowNum,
                         Title,
                         HierarchyLevel,
                         ParentID,
-                        OrderNumber};
+                        OrderNumber,
+                        RowNumber};
                 rowGroupsHierarchyViewRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGroupsHierarchyViewRow);
                 return rowGroupsHierarchyViewRow;
@@ -1517,11 +1517,11 @@ namespace Makh.Timesheet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
-                this.columnRowNum = base.Columns["RowNum"];
                 this.columnTitle = base.Columns["Title"];
                 this.columnHierarchyLevel = base.Columns["HierarchyLevel"];
                 this.columnParentID = base.Columns["ParentID"];
                 this.columnOrderNumber = base.Columns["OrderNumber"];
+                this.columnRowNumber = base.Columns["RowNumber"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1529,8 +1529,6 @@ namespace Makh.Timesheet {
             private void InitClass() {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnRowNum = new global::System.Data.DataColumn("RowNum", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRowNum);
                 this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTitle);
                 this.columnHierarchyLevel = new global::System.Data.DataColumn("HierarchyLevel", typeof(long), null, global::System.Data.MappingType.Element);
@@ -1539,6 +1537,8 @@ namespace Makh.Timesheet {
                 base.Columns.Add(this.columnParentID);
                 this.columnOrderNumber = new global::System.Data.DataColumn("OrderNumber", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrderNumber);
+                this.columnRowNumber = new global::System.Data.DataColumn("RowNumber", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRowNumber);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -2059,22 +2059,6 @@ namespace Makh.Timesheet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long RowNum {
-                get {
-                    try {
-                        return ((long)(this[this.tableGroupsHierarchyView.RowNumColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RowNum\' in table \'GroupsHierarchyView\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGroupsHierarchyView.RowNumColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Title {
                 get {
                     try {
@@ -2139,14 +2123,18 @@ namespace Makh.Timesheet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRowNumNull() {
-                return this.IsNull(this.tableGroupsHierarchyView.RowNumColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRowNumNull() {
-                this[this.tableGroupsHierarchyView.RowNumColumn] = global::System.Convert.DBNull;
+            public long RowNumber {
+                get {
+                    try {
+                        return ((long)(this[this.tableGroupsHierarchyView.RowNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RowNumber\' in table \'GroupsHierarchyView\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGroupsHierarchyView.RowNumberColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2195,6 +2183,18 @@ namespace Makh.Timesheet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetOrderNumberNull() {
                 this[this.tableGroupsHierarchyView.OrderNumberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRowNumberNull() {
+                return this.IsNull(this.tableGroupsHierarchyView.RowNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRowNumberNull() {
+                this[this.tableGroupsHierarchyView.RowNumberColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3578,11 +3578,11 @@ SELECT ID, StartTime, EndTime, Description, GroupID, UserID FROM Work WHERE (ID 
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "GroupsHierarchyView";
             tableMapping.ColumnMappings.Add("ID", "ID");
-            tableMapping.ColumnMappings.Add("RowNum", "RowNum");
             tableMapping.ColumnMappings.Add("Title", "Title");
             tableMapping.ColumnMappings.Add("HierarchyLevel", "HierarchyLevel");
             tableMapping.ColumnMappings.Add("ParentID", "ParentID");
             tableMapping.ColumnMappings.Add("OrderNumber", "OrderNumber");
+            tableMapping.ColumnMappings.Add("RowNumber", "RowNumber");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3599,8 +3599,8 @@ SELECT ID, StartTime, EndTime, Description, GroupID, UserID FROM Work WHERE (ID 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, RowNum, Title, HierarchyLevel, ParentID, OrderNumber FROM GroupsHierar" +
-                "chyView";
+            this._commandCollection[0].CommandText = "SELECT ID, Title, HierarchyLevel, ParentID, OrderNumber, RowNumber FROM GroupsHie" +
+                "rarchyView";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

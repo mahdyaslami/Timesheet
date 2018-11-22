@@ -34,8 +34,9 @@ namespace Makh.Timesheet
             groupsBindingSource.DataSource = timesheetDataSet;
             groupsBindingSource.DataMember = timesheetDataSet
                 .GroupsHierarchyView.TableName;
+            groupsBindingSource.Filter = string.Empty;
             groupsDataGridView.DataSource = groupsBindingSource;
-
+            
             SetGroupsDataGridViewAppearance();
         }
 
@@ -61,13 +62,13 @@ namespace Makh.Timesheet
                 .Visible = false;
 
             groupsDataGridView
-                .Columns[timesheetDataSet.GroupsHierarchyView.RowNumColumn.ColumnName]
-                .HeaderText = Properties.Resources.RowNumColumnName;
+                .Columns[timesheetDataSet.GroupsHierarchyView.RowNumberColumn.ColumnName]
+                .HeaderText = Properties.Resources.RowNumberColumnName;
             groupsDataGridView
-                .Columns[timesheetDataSet.GroupsHierarchyView.RowNumColumn.ColumnName]
-                .Width = int.Parse(Properties.Resources.RowNumColumnWidth);
+                .Columns[timesheetDataSet.GroupsHierarchyView.RowNumberColumn.ColumnName]
+                .Width = int.Parse(Properties.Resources.RowNumberColumnWidth);
             groupsDataGridView
-                .Columns[timesheetDataSet.GroupsHierarchyView.RowNumColumn.ColumnName]
+                .Columns[timesheetDataSet.GroupsHierarchyView.RowNumberColumn.ColumnName]
                 .SortMode = DataGridViewColumnSortMode.NotSortable;
 
             groupsDataGridView
@@ -324,16 +325,21 @@ namespace Makh.Timesheet
         /// <returns>یک عدد اعشاری به عنوان کران پایین</returns>
         private double GetMinimumOrder(AddGroupOption addGroupOption)
         {
-            int selectedIndex = groupsDataGridView.SelectedRows[0].Index;
+            int selectedRowNumber = int.Parse(groupsDataGridView
+                .SelectedRows[0].Cells[timesheetDataSet.GroupsHierarchyView
+                .RowNumberColumn.ColumnName].Value.ToString());
+            int selectedIndex = selectedRowNumber - 1;
 
             if (addGroupOption == AddGroupOption.AddToTop)
             {
                 int preIndex = selectedIndex - 1;
+
                 if (preIndex >= 0)
                 {
-                    return double.Parse(groupsDataGridView.Rows[preIndex]
-                        .Cells[timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
-                        .Value.ToString());
+                    return double.Parse(timesheetDataSet.GroupsHierarchyView
+                        .Rows[preIndex]
+                        [timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
+                        .ToString());
                 }
                 else
                 {
@@ -342,19 +348,20 @@ namespace Makh.Timesheet
             }
             else
             {
-                int nextIndex = GetNextItemIndexWithSameOrLowerLevel(selectedIndex);
+                int nextIndex = GetNextItemIndexWithSameOrLowerLevel(selectedRowNumber - 1);
 
                 if (nextIndex < 0)
                 {
-                    return double.Parse(groupsDataGridView
-                        .Rows[groupsDataGridView.Rows.Count - 1]
-                        .Cells[timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
-                        .Value.ToString());
+                    return double.Parse(timesheetDataSet.GroupsHierarchyView
+                        .Rows[timesheetDataSet.GroupsHierarchyView.Rows.Count - 1]
+                        [timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
+                        .ToString());
                 }
 
-                return double.Parse(groupsDataGridView.Rows[nextIndex - 1]
-                    .Cells[timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
-                    .Value.ToString());
+                return double.Parse(timesheetDataSet.GroupsHierarchyView
+                    .Rows[nextIndex - 1]
+                    [timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
+                    .ToString());
             }
         }
 
@@ -370,13 +377,16 @@ namespace Makh.Timesheet
         /// <returns>مقدار بیشترین ترتیب که اعشاری هم هست</returns>
         private double GetMaximumOrder(AddGroupOption addGroupOption)
         {
-            int selectedIndex = groupsDataGridView.SelectedRows[0].Index;
+            int selectedRowNumber = int.Parse(groupsDataGridView
+                .SelectedRows[0].Cells[timesheetDataSet.GroupsHierarchyView
+                .RowNumberColumn.ColumnName].Value.ToString());
+            int selectedIndex = selectedRowNumber - 1;
 
             if (addGroupOption == AddGroupOption.AddToTop)
             {
-                return double.Parse(groupsDataGridView.Rows[selectedIndex]
-                    .Cells[timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
-                    .Value.ToString());
+                return double.Parse(timesheetDataSet.GroupsHierarchyView.Rows[selectedIndex]
+                    [timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
+                    .ToString());
             }
             else
             {
@@ -387,9 +397,9 @@ namespace Makh.Timesheet
                     return Properties.Settings.Default.MaximumOrderForGroup;
                 }
 
-                return double.Parse(groupsDataGridView.Rows[nextIndex]
-                    .Cells[timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
-                    .Value.ToString());
+                return double.Parse(timesheetDataSet.GroupsHierarchyView.Rows[nextIndex]
+                    [timesheetDataSet.GroupsHierarchyView.OrderNumberColumn.ColumnName]
+                    .ToString());
             }
         }
 
@@ -405,22 +415,22 @@ namespace Makh.Timesheet
 
             int nextIndex = selectedIndex + 1;
             
-            // اگر آخرین سطر در گرید باشد
-            if (nextIndex > groupsDataGridView.Rows.Count)
+            // اگر آخرین سطر باشد
+            if (nextIndex > timesheetDataSet.GroupsHierarchyView.Rows.Count)
             {
                 return -1;
             }
 
-            int selectedLevel = int.Parse(groupsDataGridView.Rows[selectedIndex]
-                .Cells[timesheetDataSet.GroupsHierarchyView.HierarchyLevelColumn.ColumnName]
-                .Value.ToString());
+            int selectedLevel = int.Parse(timesheetDataSet.GroupsHierarchyView.Rows[selectedIndex]
+                [timesheetDataSet.GroupsHierarchyView.HierarchyLevelColumn.ColumnName]
+                .ToString());
 
             // اگر یک سطح بالا تر باشد
-            for (int nextLevel; nextIndex < groupsDataGridView.Rows.Count; nextIndex++)
+            for (int nextLevel; nextIndex < timesheetDataSet.GroupsHierarchyView.Rows.Count; nextIndex++)
             {
-                nextLevel = int.Parse(groupsDataGridView.Rows[nextIndex]
-                    .Cells[timesheetDataSet.GroupsHierarchyView.HierarchyLevelColumn.ColumnName]
-                    .Value.ToString());
+                nextLevel = int.Parse(timesheetDataSet.GroupsHierarchyView.Rows[nextIndex]
+                    [timesheetDataSet.GroupsHierarchyView.HierarchyLevelColumn.ColumnName]
+                    .ToString());
 
                 // اگر سطر بعد در گرید یک سطح پایین تر بود یا برابر بود
                 if (nextLevel <= selectedLevel)
@@ -476,26 +486,12 @@ namespace Makh.Timesheet
 
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
-            groupsBindingSource.Filter = string.Format("Title LIKE '*{0}*'"
+            groupsBindingSource.Filter = string
+                .Format(Properties.Settings.Default.IsLikeExperssion
+                , timesheetDataSet.GroupsHierarchyView.TitleColumn.ColumnName
                 , searchTextBox.Text);
 
             SetGroupDataGridViewColor();
         }
-
-        //private string GetFilterExpression(string text)
-        //{
-        //    DataRow[] results = timesheetDataSet
-        //        .GroupsHierarchyView.Select(string.Format("Title LIKE '*{0}*'"
-        //            ,text));
-
-        //    string result = string.Empty;
-
-        //    if (results == null)
-        //        return result;
-
-        //    string or = " OR ";
-        //    string expression = "ID";
-
-        //}
     }
 }

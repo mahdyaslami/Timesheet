@@ -279,18 +279,18 @@ namespace Makh.Timesheet.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ردیف.
         /// </summary>
-        internal static string RowNumColumnName {
+        internal static string RowNumberColumnName {
             get {
-                return ResourceManager.GetString("RowNumColumnName", resourceCulture);
+                return ResourceManager.GetString("RowNumberColumnName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 50.
         /// </summary>
-        internal static string RowNumColumnWidth {
+        internal static string RowNumberColumnWidth {
             get {
-                return ResourceManager.GetString("RowNumColumnWidth", resourceCulture);
+                return ResourceManager.GetString("RowNumberColumnWidth", resourceCulture);
             }
         }
         

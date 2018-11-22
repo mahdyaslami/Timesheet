@@ -101,27 +101,30 @@ namespace Makh.Timesheet.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(" IS NULL")]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0} IS NULL")]
         public string IsNullExperssion {
             get {
                 return ((string)(this["IsNullExperssion"]));
             }
-            set {
-                this["IsNullExperssion"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(" = {0}")]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0} = {1}")]
         public string IsEqualExperssion {
             get {
                 return ((string)(this["IsEqualExperssion"]));
             }
-            set {
-                this["IsEqualExperssion"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0} LIKE \'*{1}*\'")]
+        public string IsLikeExperssion {
+            get {
+                return ((string)(this["IsLikeExperssion"]));
             }
         }
     }

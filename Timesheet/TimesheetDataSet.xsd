@@ -194,7 +194,7 @@ SELECT ID, UserLoginName FROM [User] WHERE (ID = @ID)</CommandText>
               <DbSource ConnectionRef="TimesheetConnectionString (Settings)" DbObjectName="dbo.GroupsHierarchyView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT ID, RowNum, Title, HierarchyLevel, ParentID, OrderNumber FROM GroupsHierarchyView</CommandText>
+                    <CommandText>SELECT ID, Title, HierarchyLevel, ParentID, OrderNumber, RowNumber FROM GroupsHierarchyView</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -202,11 +202,11 @@ SELECT ID, UserLoginName FROM [User] WHERE (ID = @ID)</CommandText>
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="ID" DataSetColumn="ID" />
-              <Mapping SourceColumn="RowNum" DataSetColumn="RowNum" />
               <Mapping SourceColumn="Title" DataSetColumn="Title" />
               <Mapping SourceColumn="HierarchyLevel" DataSetColumn="HierarchyLevel" />
               <Mapping SourceColumn="ParentID" DataSetColumn="ParentID" />
               <Mapping SourceColumn="OrderNumber" DataSetColumn="OrderNumber" />
+              <Mapping SourceColumn="RowNumber" DataSetColumn="RowNumber" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -218,7 +218,7 @@ SELECT ID, UserLoginName FROM [User] WHERE (ID = @ID)</CommandText>
   <xs:element name="TimesheetDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="TimesheetDataSet" msprop:Generator_UserDSName="TimesheetDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Group" msprop:Generator_TableClassName="GroupDataTable" msprop:Generator_TableVarName="tableGroup" msprop:Generator_TablePropName="Group" msprop:Generator_RowDeletingName="GroupRowDeleting" msprop:Generator_RowChangingName="GroupRowChanging" msprop:Generator_RowEvHandlerName="GroupRowChangeEventHandler" msprop:Generator_RowDeletedName="GroupRowDeleted" msprop:Generator_UserTableName="Group" msprop:Generator_RowChangedName="GroupRowChanged" msprop:Generator_RowEvArgName="GroupRowChangeEvent" msprop:Generator_RowClassName="GroupRow">
+        <xs:element name="Group" msprop:Generator_TableClassName="GroupDataTable" msprop:Generator_TableVarName="tableGroup" msprop:Generator_RowChangedName="GroupRowChanged" msprop:Generator_TablePropName="Group" msprop:Generator_RowDeletingName="GroupRowDeleting" msprop:Generator_RowChangingName="GroupRowChanging" msprop:Generator_RowEvHandlerName="GroupRowChangeEventHandler" msprop:Generator_RowDeletedName="GroupRowDeleted" msprop:Generator_RowClassName="GroupRow" msprop:Generator_UserTableName="Group" msprop:Generator_RowEvArgName="GroupRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -241,7 +241,7 @@ SELECT ID, UserLoginName FROM [User] WHERE (ID = @ID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Work" msprop:Generator_TableClassName="WorkDataTable" msprop:Generator_TableVarName="tableWork" msprop:Generator_TablePropName="Work" msprop:Generator_RowDeletingName="WorkRowDeleting" msprop:Generator_RowChangingName="WorkRowChanging" msprop:Generator_RowEvHandlerName="WorkRowChangeEventHandler" msprop:Generator_RowDeletedName="WorkRowDeleted" msprop:Generator_UserTableName="Work" msprop:Generator_RowChangedName="WorkRowChanged" msprop:Generator_RowEvArgName="WorkRowChangeEvent" msprop:Generator_RowClassName="WorkRow">
+        <xs:element name="Work" msprop:Generator_TableClassName="WorkDataTable" msprop:Generator_TableVarName="tableWork" msprop:Generator_RowChangedName="WorkRowChanged" msprop:Generator_TablePropName="Work" msprop:Generator_RowDeletingName="WorkRowDeleting" msprop:Generator_RowChangingName="WorkRowChanging" msprop:Generator_RowEvHandlerName="WorkRowChangeEventHandler" msprop:Generator_RowDeletedName="WorkRowDeleted" msprop:Generator_RowClassName="WorkRow" msprop:Generator_UserTableName="Work" msprop:Generator_RowEvArgName="WorkRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -259,7 +259,7 @@ SELECT ID, UserLoginName FROM [User] WHERE (ID = @ID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="User" msprop:Generator_TableClassName="UserDataTable" msprop:Generator_TableVarName="tableUser" msprop:Generator_RowChangedName="UserRowChanged" msprop:Generator_TablePropName="User" msprop:Generator_RowDeletingName="UserRowDeleting" msprop:Generator_RowChangingName="UserRowChanging" msprop:Generator_RowEvHandlerName="UserRowChangeEventHandler" msprop:Generator_RowDeletedName="UserRowDeleted" msprop:Generator_RowClassName="UserRow" msprop:Generator_UserTableName="User" msprop:Generator_RowEvArgName="UserRowChangeEvent">
+        <xs:element name="User" msprop:Generator_TableClassName="UserDataTable" msprop:Generator_TableVarName="tableUser" msprop:Generator_TablePropName="User" msprop:Generator_RowDeletingName="UserRowDeleting" msprop:Generator_RowChangingName="UserRowChanging" msprop:Generator_RowEvHandlerName="UserRowChangeEventHandler" msprop:Generator_RowDeletedName="UserRowDeleted" msprop:Generator_UserTableName="User" msprop:Generator_RowChangedName="UserRowChanged" msprop:Generator_RowEvArgName="UserRowChangeEvent" msprop:Generator_RowClassName="UserRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -273,11 +273,10 @@ SELECT ID, UserLoginName FROM [User] WHERE (ID = @ID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GroupsHierarchyView" msprop:Generator_TableClassName="GroupsHierarchyViewDataTable" msprop:Generator_TableVarName="tableGroupsHierarchyView" msprop:Generator_TablePropName="GroupsHierarchyView" msprop:Generator_RowDeletingName="GroupsHierarchyViewRowDeleting" msprop:Generator_RowChangingName="GroupsHierarchyViewRowChanging" msprop:Generator_RowEvHandlerName="GroupsHierarchyViewRowChangeEventHandler" msprop:Generator_RowDeletedName="GroupsHierarchyViewRowDeleted" msprop:Generator_UserTableName="GroupsHierarchyView" msprop:Generator_RowChangedName="GroupsHierarchyViewRowChanged" msprop:Generator_RowEvArgName="GroupsHierarchyViewRowChangeEvent" msprop:Generator_RowClassName="GroupsHierarchyViewRow">
+        <xs:element name="GroupsHierarchyView" msprop:Generator_TableClassName="GroupsHierarchyViewDataTable" msprop:Generator_TableVarName="tableGroupsHierarchyView" msprop:Generator_RowChangedName="GroupsHierarchyViewRowChanged" msprop:Generator_TablePropName="GroupsHierarchyView" msprop:Generator_RowDeletingName="GroupsHierarchyViewRowDeleting" msprop:Generator_RowChangingName="GroupsHierarchyViewRowChanging" msprop:Generator_RowEvHandlerName="GroupsHierarchyViewRowChangeEventHandler" msprop:Generator_RowDeletedName="GroupsHierarchyViewRowDeleted" msprop:Generator_RowClassName="GroupsHierarchyViewRow" msprop:Generator_UserTableName="GroupsHierarchyView" msprop:Generator_RowEvArgName="GroupsHierarchyViewRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
-              <xs:element name="RowNum" msprop:Generator_ColumnVarNameInTable="columnRowNum" msprop:Generator_ColumnPropNameInRow="RowNum" msprop:Generator_ColumnPropNameInTable="RowNumColumn" msprop:Generator_UserColumnName="RowNum" type="xs:long" minOccurs="0" />
               <xs:element name="Title" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -288,6 +287,7 @@ SELECT ID, UserLoginName FROM [User] WHERE (ID = @ID)</CommandText>
               <xs:element name="HierarchyLevel" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnHierarchyLevel" msprop:Generator_ColumnPropNameInRow="HierarchyLevel" msprop:Generator_ColumnPropNameInTable="HierarchyLevelColumn" msprop:Generator_UserColumnName="HierarchyLevel" type="xs:long" minOccurs="0" />
               <xs:element name="ParentID" msprop:Generator_ColumnVarNameInTable="columnParentID" msprop:Generator_ColumnPropNameInRow="ParentID" msprop:Generator_ColumnPropNameInTable="ParentIDColumn" msprop:Generator_UserColumnName="ParentID" type="xs:int" minOccurs="0" />
               <xs:element name="OrderNumber" msprop:Generator_ColumnVarNameInTable="columnOrderNumber" msprop:Generator_ColumnPropNameInRow="OrderNumber" msprop:Generator_ColumnPropNameInTable="OrderNumberColumn" msprop:Generator_UserColumnName="OrderNumber" type="xs:double" minOccurs="0" />
+              <xs:element name="RowNumber" msprop:Generator_ColumnVarNameInTable="columnRowNumber" msprop:Generator_ColumnPropNameInRow="RowNumber" msprop:Generator_ColumnPropNameInTable="RowNumberColumn" msprop:Generator_UserColumnName="RowNumber" type="xs:long" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -312,9 +312,9 @@ SELECT ID, UserLoginName FROM [User] WHERE (ID = @ID)</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Group_Group" msdata:parent="Group" msdata:child="Group" msdata:parentkey="ID" msdata:childkey="ParentID" msprop:Generator_UserChildTable="Group" msprop:Generator_ChildPropName="GetGroupRows" msprop:Generator_UserRelationName="FK_Group_Group" msprop:Generator_RelationVarName="relationFK_Group_Group" msprop:Generator_UserParentTable="Group" msprop:Generator_ParentPropName="GroupRowParent" />
-      <msdata:Relationship name="FK_Work_Group" msdata:parent="Group" msdata:child="Work" msdata:parentkey="ID" msdata:childkey="GroupID" msprop:Generator_UserChildTable="Work" msprop:Generator_ChildPropName="GetWorkRows" msprop:Generator_UserRelationName="FK_Work_Group" msprop:Generator_ParentPropName="GroupRow" msprop:Generator_RelationVarName="relationFK_Work_Group" msprop:Generator_UserParentTable="Group" />
-      <msdata:Relationship name="FK_Work_User" msdata:parent="User" msdata:child="Work" msdata:parentkey="ID" msdata:childkey="UserID" msprop:Generator_UserChildTable="Work" msprop:Generator_ChildPropName="GetWorkRows" msprop:Generator_UserRelationName="FK_Work_User" msprop:Generator_ParentPropName="UserRow" msprop:Generator_RelationVarName="relationFK_Work_User" msprop:Generator_UserParentTable="User" />
+      <msdata:Relationship name="FK_Group_Group" msdata:parent="Group" msdata:child="Group" msdata:parentkey="ID" msdata:childkey="ParentID" msprop:Generator_UserChildTable="Group" msprop:Generator_ChildPropName="GetGroupRows" msprop:Generator_UserRelationName="FK_Group_Group" msprop:Generator_ParentPropName="GroupRowParent" msprop:Generator_RelationVarName="relationFK_Group_Group" msprop:Generator_UserParentTable="Group" />
+      <msdata:Relationship name="FK_Work_Group" msdata:parent="Group" msdata:child="Work" msdata:parentkey="ID" msdata:childkey="GroupID" msprop:Generator_UserChildTable="Work" msprop:Generator_ChildPropName="GetWorkRows" msprop:Generator_UserRelationName="FK_Work_Group" msprop:Generator_RelationVarName="relationFK_Work_Group" msprop:Generator_UserParentTable="Group" msprop:Generator_ParentPropName="GroupRow" />
+      <msdata:Relationship name="FK_Work_User" msdata:parent="User" msdata:child="Work" msdata:parentkey="ID" msdata:childkey="UserID" msprop:Generator_UserChildTable="Work" msprop:Generator_ChildPropName="GetWorkRows" msprop:Generator_UserRelationName="FK_Work_User" msprop:Generator_RelationVarName="relationFK_Work_User" msprop:Generator_UserParentTable="User" msprop:Generator_ParentPropName="UserRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
