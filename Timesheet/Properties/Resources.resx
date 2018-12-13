@@ -195,7 +195,13 @@
   <data name="RowNumberColumnWidth" xml:space="preserve">
     <value>50</value>
   </data>
+  <data name="ServerAndDatabaseIsNotEntered" xml:space="preserve">
+    <value>نام سرور و نام پایگاده داده وارد نشده است</value>
+  </data>
   <data name="TestConnectionSucceeded" xml:space="preserve">
     <value>اتصال با موفقیت بررسی شد</value>
+  </data>
+  <data name="UserIDAndPasswordIsNotEntered" xml:space="preserve">
+    <value>آی دی کاربر و پسورد وارد نشده است</value>
   </data>
 </root>

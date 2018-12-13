@@ -9,8 +9,11 @@
   </Class>
   <Class Name="Makh.Timesheet.Main">
     <Position X="2.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AYAAAAAQACAAAAAAIgiEACACAoAiAQAQAAAAAABAIAA=</HashCode>
+      <HashCode>AYAAAAAQACAAAAAAIgiEACACAoAiAQAQAAAABABAIAA=</HashCode>
       <FileName>Main.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -27,7 +30,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAQAIBSQCEAAAADCAgQACQAAABBAGABBAMAAAAAA=</HashCode>
+      <HashCode>AAAAAQAIJeSCCAAAADCAkQASQAAABBAGABBAMAAICAg=</HashCode>
       <FileName>Groups.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -41,7 +44,7 @@
   <Class Name="Makh.Timesheet.NameDialog">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAADAAAAAAAACAAAACAIQAAAAADAAAIAAAAAA=</HashCode>
+      <HashCode>AAACAAAAADQAAAIAAAGAAAACEARAEAAADAgQAAAAAAA=</HashCode>
       <FileName>NameDialog.cs</FileName>
     </TypeIdentifier>
   </Class>

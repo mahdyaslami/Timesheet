@@ -127,5 +127,35 @@ namespace Makh.Timesheet.Properties {
                 return ((string)(this["IsLikeExperssion"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server={0};Database={1};User Id={2};Password={3};")]
+        public string CustomServerConnectionStringWithAthentication {
+            get {
+                return ((string)(this["CustomServerConnectionStringWithAthentication"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server={0};Database={1};Trusted_Connection=True;")]
+        public string CustomServerConnectionString {
+            get {
+                return ((string)(this["CustomServerConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Filename {
+            get {
+                return ((string)(this["Filename"]));
+            }
+            set {
+                this["Filename"] = value;
+            }
+        }
     }
 }

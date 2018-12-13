@@ -30,6 +30,7 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.fileTabPage = new System.Windows.Forms.TabPage();
+            this.setToDefaultButton = new System.Windows.Forms.Button();
             this.selectFileButton = new System.Windows.Forms.Button();
             this.selectedFilenameTextBox = new System.Windows.Forms.TextBox();
             this.testFileConnectionButton = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.setToDefaultButton = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.fileTabPage.SuspendLayout();
             this.serverTabPage.SuspendLayout();
@@ -79,6 +79,17 @@
             this.fileTabPage.TabIndex = 0;
             this.fileTabPage.Text = "فایل";
             this.fileTabPage.UseVisualStyleBackColor = true;
+            // 
+            // setToDefaultButton
+            // 
+            this.setToDefaultButton.Location = new System.Drawing.Point(148, 234);
+            this.setToDefaultButton.Margin = new System.Windows.Forms.Padding(10);
+            this.setToDefaultButton.Name = "setToDefaultButton";
+            this.setToDefaultButton.Size = new System.Drawing.Size(130, 27);
+            this.setToDefaultButton.TabIndex = 32;
+            this.setToDefaultButton.Text = "برگشت به پیش فرض";
+            this.setToDefaultButton.UseVisualStyleBackColor = true;
+            this.setToDefaultButton.Click += new System.EventHandler(this.setToDefaultButton_Click);
             // 
             // selectFileButton
             // 
@@ -134,6 +145,7 @@
             // 
             // testServerConnectionButton
             // 
+            this.testServerConnectionButton.Enabled = false;
             this.testServerConnectionButton.Location = new System.Drawing.Point(13, 234);
             this.testServerConnectionButton.Margin = new System.Windows.Forms.Padding(10);
             this.testServerConnectionButton.Name = "testServerConnectionButton";
@@ -141,6 +153,7 @@
             this.testServerConnectionButton.TabIndex = 30;
             this.testServerConnectionButton.Text = "تست اتصال";
             this.testServerConnectionButton.UseVisualStyleBackColor = true;
+            this.testServerConnectionButton.Click += new System.EventHandler(this.testServerConnectionButton_Click);
             // 
             // passwordLabel
             // 
@@ -153,6 +166,7 @@
             // 
             // passwordTextBox
             // 
+            this.passwordTextBox.Enabled = false;
             this.passwordTextBox.Location = new System.Drawing.Point(135, 172);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(150, 27);
@@ -169,6 +183,7 @@
             // 
             // usernameTextBox
             // 
+            this.usernameTextBox.Enabled = false;
             this.usernameTextBox.Location = new System.Drawing.Point(135, 139);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(150, 27);
@@ -177,12 +192,15 @@
             // isUserPasswordNeedCheckBox
             // 
             this.isUserPasswordNeedCheckBox.AutoSize = true;
+            this.isUserPasswordNeedCheckBox.Enabled = false;
             this.isUserPasswordNeedCheckBox.Location = new System.Drawing.Point(283, 116);
             this.isUserPasswordNeedCheckBox.Name = "isUserPasswordNeedCheckBox";
             this.isUserPasswordNeedCheckBox.Size = new System.Drawing.Size(129, 23);
             this.isUserPasswordNeedCheckBox.TabIndex = 5;
             this.isUserPasswordNeedCheckBox.Text = "نیاز به احراز هویت";
             this.isUserPasswordNeedCheckBox.UseVisualStyleBackColor = true;
+            this.isUserPasswordNeedCheckBox.CheckedChanged += new System.EventHandler(this.isUserPasswordNeedCheckBox_CheckedChanged);
+            this.isUserPasswordNeedCheckBox.EnabledChanged += new System.EventHandler(this.isUserPasswordNeedCheckBox_EnabledChanged);
             // 
             // databaseNameLabel
             // 
@@ -195,6 +213,7 @@
             // 
             // databaseNameTextBox
             // 
+            this.databaseNameTextBox.Enabled = false;
             this.databaseNameTextBox.Location = new System.Drawing.Point(183, 62);
             this.databaseNameTextBox.Name = "databaseNameTextBox";
             this.databaseNameTextBox.Size = new System.Drawing.Size(150, 27);
@@ -211,6 +230,7 @@
             // 
             // serverAddressTextBox
             // 
+            this.serverAddressTextBox.Enabled = false;
             this.serverAddressTextBox.Location = new System.Drawing.Point(183, 29);
             this.serverAddressTextBox.Name = "serverAddressTextBox";
             this.serverAddressTextBox.Size = new System.Drawing.Size(150, 27);
@@ -225,6 +245,7 @@
             this.isServerDBUsedCheckBox.TabIndex = 0;
             this.isServerDBUsedCheckBox.Text = "استفاده از سرور";
             this.isServerDBUsedCheckBox.UseVisualStyleBackColor = true;
+            this.isServerDBUsedCheckBox.CheckedChanged += new System.EventHandler(this.isServerDBUsedCheckBox_CheckedChanged);
             // 
             // saveButton
             // 
@@ -251,17 +272,6 @@
             // openFileDialog
             // 
             this.openFileDialog.Filter = "sqlserverdb|*.mdf";
-            // 
-            // setToDefaultButton
-            // 
-            this.setToDefaultButton.Location = new System.Drawing.Point(148, 234);
-            this.setToDefaultButton.Margin = new System.Windows.Forms.Padding(10);
-            this.setToDefaultButton.Name = "setToDefaultButton";
-            this.setToDefaultButton.Size = new System.Drawing.Size(130, 27);
-            this.setToDefaultButton.TabIndex = 32;
-            this.setToDefaultButton.Text = "برگشت به پیش فرض";
-            this.setToDefaultButton.UseVisualStyleBackColor = true;
-            this.setToDefaultButton.Click += new System.EventHandler(this.setToDefaultButton_Click);
             // 
             // ConnectionSettingDialog
             // 

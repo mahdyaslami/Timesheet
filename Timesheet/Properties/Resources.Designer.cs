@@ -295,11 +295,29 @@ namespace Makh.Timesheet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to نام سرور و نام پایگاده داده وارد نشده است.
+        /// </summary>
+        internal static string ServerAndDatabaseIsNotEntered {
+            get {
+                return ResourceManager.GetString("ServerAndDatabaseIsNotEntered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اتصال با موفقیت بررسی شد.
         /// </summary>
         internal static string TestConnectionSucceeded {
             get {
                 return ResourceManager.GetString("TestConnectionSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to آی دی کاربر و پسورد وارد نشده است.
+        /// </summary>
+        internal static string UserIDAndPasswordIsNotEntered {
+            get {
+                return ResourceManager.GetString("UserIDAndPasswordIsNotEntered", resourceCulture);
             }
         }
     }

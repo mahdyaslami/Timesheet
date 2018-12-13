@@ -21,21 +21,22 @@ namespace Makh.Timesheet
     public class DatabaseProvider
     {
         private static string fileConnectionString;
-        private static bool useDefault;
-
+        private static bool isDefaultFileUsed;
+        private static string serverConnectionString;
+        private static bool hasServer;
         static DatabaseProvider()
         {
             fileConnectionString = string.Empty;
-            useDefault = true;
+            isDefaultFileUsed = true;
+            hasServer = false;
         }
 
         /// <summary>
-        /// بررسی اینکه امکان اتصال به فایل داده شود توسط لوکال دی بی امکان پذیر است یا خیر
+        /// بررسی اینکه امکان اتصال به فایل داده شده توسط لوکال دی بی امکان پذیر است یا خیر
         /// </summary>
         /// <remarks>
         /// این تابع هیچ اکسپشنی پرتاب نمی کنه
         /// خطای اتفاق افتاده رو می تونید از طریق پارامتر ای که اووت تعریف شده دریافت کنید
-        /// خطا هایی که خودش بررسی می کند وجود داشتن فایل و درست بودن آدرس است
         /// و خطاهای دیگر مربوط به کانکشن هست
         /// </remarks>
         /// <param name="filename">ادرس فایل پایگاه داده لوکال که قرار است اتصال به آن بررسی شود</param>
@@ -46,36 +47,16 @@ namespace Makh.Timesheet
         /// </returns>
         public static bool TestFileConnection(string filename, out Exception exception)
         {
-            exception = null;
-
-            if (string.IsNullOrEmpty(filename))
-            {
-                exception = new ArgumentNullException(
-                    Properties.Resources.FilenameCantBeNullOrEmpty);
-                return false;
-            }
-            else if (File.Exists(filename) == false)
-            {
-                exception = new FileNotFoundException();
-                return false;
-            }
-
             try
             {
-                using (SqlConnection connection = 
-                    new SqlConnection(CreateFileConnectionString(filename)))
-                {
-                    connection.Open();
-                    connection.Close();
-                }
+                return TestConnectonString(
+                    CreateFileConnectionString(filename), out exception);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 exception = ex;
                 return false;
             }
-
-            return true;
         }
 
         /// <summary>
@@ -89,10 +70,12 @@ namespace Makh.Timesheet
         public static void SetFileConnectionString(string filename)
         {
             Exception exception = null;
-            if (TestFileConnection(filename, out exception))
+            string connectionString = CreateFileConnectionString(filename);
+
+            if (TestConnectonString(connectionString, out exception))
             {
-                fileConnectionString = CreateFileConnectionString(filename);
-                useDefault = false;
+                fileConnectionString = connectionString;
+                isDefaultFileUsed = false;
             }
             else
             {
@@ -106,19 +89,33 @@ namespace Makh.Timesheet
         public static void SetFileConnectionStringToDefault()
         {
             fileConnectionString = string.Empty;
-            useDefault = true;
+            isDefaultFileUsed = true;
         }
 
         /// <summary>
         /// کانکشن استرینگ را برای فایل جدید تولید می کند
         /// </summary>
-        /// <remarks>با استفاده از الگوی داخل ریسورس و گرفتن ادرس فایل کانکشن استرینگ را درست می کند</remarks>
+        /// <remarks>
+        /// بررسی می کند اگر فایل وجود داشت
+        /// با استفاده از الگوی داخل ریسورس و گرفتن ادرس فایل کانکشن استرینگ را درست می کند
+        /// در غیر این صورت اکسپشن پرتاب می کند
+        /// </remarks>
         /// <returns>کانکشن استرینگ جدید</returns>
         private static string CreateFileConnectionString(string filename)
         {
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException(
+                    Properties.Resources.FilenameCantBeNullOrEmpty);
+            }
+            else if (File.Exists(filename) == false)
+            {
+                throw new FileNotFoundException();
+            }
+
             return string.Format(
-                    Properties.Settings.Default.CustomFileConnectionString,
-                    filename);
+                Properties.Settings.Default.CustomFileConnectionString,
+                filename);
         }
 
         /// <summary>
@@ -140,10 +137,7 @@ namespace Makh.Timesheet
                 new GroupsHierarchyViewTableAdapter())
             {
                 SqlConnection conn = GetConnection();
-                if (conn != null)
-                {
-                    adapter.Connection = conn;
-                }
+                adapter.Connection = conn;
 
                 adapter.Fill(dataSet.GroupsHierarchyView);
             }
@@ -180,10 +174,7 @@ namespace Makh.Timesheet
                 new GroupTableAdapter())
             {
                 SqlConnection conn = GetConnection();
-                if (conn != null)
-                {
-                    adapter.Connection = conn;
-                }
+                adapter.Connection = conn;
 
                 adapter.Fill(dataSet.Group);
             }
@@ -198,11 +189,15 @@ namespace Makh.Timesheet
         /// </remarks>
         private static SqlConnection GetConnection()
         {
-            if (useDefault == false)
+            if (isDefaultFileUsed == false)
             {
                 return new SqlConnection(fileConnectionString);
             }
-            return null;
+            else 
+            {
+                return new SqlConnection(
+                        Properties.Settings.Default.TimesheetConnectionString);
+            }
         }
 
         /// <summary>
@@ -222,29 +217,201 @@ namespace Makh.Timesheet
 
             using (TableAdapterManager manager = new TableAdapterManager())
             {
-                //SqlConnection conn = GetConnection();
-                //if (conn == null)
-                //{
-                //    conn = new SqlConnection(
-                //        Properties.Settings.Default.TimesheetConnectionString);
-                //    manager.Connection = conn;
-                //}
-                //else
-                //{
-                //    manager.Connection = conn;
-                //}
+                SqlConnection conn = GetConnection();
+                manager.Connection = conn;
 
                 manager.GroupTableAdapter = new GroupTableAdapter();
-                //manager.GroupTableAdapter.Connection = conn;
+                manager.GroupTableAdapter.Connection = conn;
 
                 manager.UserTableAdapter = new UserTableAdapter();
-                //manager.UserTableAdapter.Connection = conn;
+                manager.UserTableAdapter.Connection = conn;
 
                 manager.WorkTableAdapter = new WorkTableAdapter();
-                //manager.WorkTableAdapter.Connection = conn;
+                manager.WorkTableAdapter.Connection = conn;
 
                 manager.UpdateAll(dataSet);
             }
+        }
+
+        /// <summary>
+        /// بررسی می کند آیا اتصال به سرور داده شده وجود دارد یا خیر
+        /// </summary>
+        /// <remarks>
+        /// این تابع هیچ اکسپشنی پرتاب نمی کنه
+        /// خطای اتفاق افتاده رو می تونید از طریق پارامتر ای که اووت تعریف شده دریافت کنید
+        /// کار که انجام می دهد امکان اتصال به سرور از طریق کانکشن استریگ داده شده است
+        /// </remarks>
+        /// <param name="exception">در صورت بروز خطا می تونید خطا رو از این طریق دریاف کنید</param>
+        /// <returns>اگر ترو برگردد اتصال وجود دارد و اگر فالس برگردد اتصال وجود ندارد و خطای مورد نظر درون پارامتر خروجی ارسال می شود</returns>
+        public static bool TestServerConnection(string server,
+            string database, string userId, string password, out Exception exception)
+        {
+            try
+            {
+                return TestConnectonString(CreateServerConnectionString(server,
+                            database, userId, password), out exception);
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// بررسی می کند آیا اتصال به سرور داده شده وجود دارد یا خیر
+        /// </summary>
+        /// <remarks>
+        /// این تابع هیچ اکسپشنی پرتاب نمی کنه
+        /// خطای اتفاق افتاده رو می تونید از طریق پارامتر ای که اووت تعریف شده دریافت کنید
+        /// کار که انجام می دهد امکان اتصال به سرور از طریق کانکشن استریگ داده شده است
+        /// </remarks>
+        /// <param name="exception">در صورت بروز خطا می تونید خطا رو از این طریق دریاف کنید</param>
+        /// <returns>اگر ترو برگردد اتصال وجود دارد و اگر فالس برگردد اتصال وجود ندارد و خطای مورد نظر درون پارامتر خروجی ارسال می شود</returns>
+        public static bool TestServerConnection(string server,
+            string database, out Exception exception)
+        {
+            try
+            {
+                return TestConnectonString(CreateServerConnectionString(server,
+                    database), out exception);
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// کاننکشن استریگ ثبت می کند - کاننکشن استرینگ با احراز هویت
+        /// </summary>
+        /// <remarks>
+        /// کاننکشن استرین را تست می کند
+        /// در صورت درست بود آن را به عنوان کاننکشن استریگ سرور تنظیم می کند
+        /// </remarks>
+        public static void SetServerConnectionString(string server,
+            string database, string userId, string password)
+        {
+            Exception exception = null;
+            string connectionString = CreateServerConnectionString(
+                server, database, userId, password);
+
+            if (TestConnectonString(connectionString, out exception))
+            {
+                serverConnectionString = connectionString;
+                hasServer = true;
+            }
+            else
+            {
+                throw exception;
+            }
+        }
+
+        /// <summary>
+        /// کاننکشن استریگ ثبت می کند - کاننکشن استرینگ بدون احراز هویت
+        /// </summary>
+        /// <remarks>
+        /// کاننکشن استرین را تست می کند
+        /// در صورت درست بود آن را به عنوان کاننکشن استریگ سرور تنظیم می کند
+        /// </remarks>
+        public static void SetServerConnectionString(string server,
+            string database)
+        {
+            Exception exception = null;
+            string connectionString = CreateServerConnectionString(
+                server, database);
+
+            if (TestConnectonString(connectionString, out exception))
+            {
+                serverConnectionString = connectionString;
+                hasServer = true;
+            }
+            else
+            {
+                throw exception;
+            }
+        }
+
+        /// <summary>
+        /// با توجه به پارامتر های ورودی کانکشن استرینگ با احراز هویت را بر می گرداند
+        /// </summary>
+        /// <remarks>
+        /// از پروپرتایز استفاده می کند که الگو را بگیرد
+        /// الگوی با احراز هویت
+        /// </remarks>
+        /// <returns>کانکشن استریگ</returns>
+        private static string CreateServerConnectionString(string server,
+            string database, string userId, string password)
+        {
+            if (string.IsNullOrWhiteSpace(server))
+                throw new ArgumentNullException("server");
+            else if (string.IsNullOrWhiteSpace(database))
+                throw new ArgumentNullException("database");
+            else if (string.IsNullOrWhiteSpace(userId))
+                throw new ArgumentNullException("userId");
+            else if (string.IsNullOrWhiteSpace(password))
+                throw new ArgumentNullException("password");
+
+            return string.Format(
+                Properties.Settings.Default.CustomServerConnectionStringWithAthentication,
+                server, database, userId, password);
+        }
+
+        /// <summary>
+        /// با توجه به پارامتر های ورودی کانکشن استرینگ بدون احراز هویت را بر می گرداند
+        /// </summary>
+        /// <remarks>الگوی کاننکشن استرینگ بدون احراز هویت را از پروپرتایز می گیرد و با پارامتر های ورودی ترکیب می کند و بر می گرداند</remarks>
+        /// <returns>کاننکشن استرینگ</returns>
+        private static string CreateServerConnectionString(string server,
+            string database)
+        {
+            if (string.IsNullOrWhiteSpace(server))
+                throw new ArgumentNullException("server");
+            else if (string.IsNullOrWhiteSpace(database))
+                throw new ArgumentNullException("database");
+
+            return string.Format(
+                Properties.Settings.Default.CustomServerConnectionString,
+                server, database);
+        }
+
+        /// <summary>
+        /// یک کاننکش استرینگ میگیرد و تست می کند آیا اتصال برقرار است یا خیر
+        /// </summary>
+        /// <remarks>اتصال را بررسی می کند و در صورت وجود مشکل خطا بر می گرداند از طریق پارامتر خروجی</remarks>
+        /// <param name="connectionString">کانکشن استرینگ</param>
+        /// <param name="exception">در صورت پرتاب شدن خطا حاوی خطاست</param>
+        /// <returns>در صورت برقرار بودن ترو بر می گرداند در غیر این صورت فالس به همراه یک اکسپشن خروجی</returns>
+        private static bool TestConnectonString(string connectionString, out Exception exception)
+        {
+            bool result = true;
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                exception = new ArgumentNullException("connectionString");
+                result = false;
+            }
+            else
+            {
+                try
+                {
+                    using (SqlConnection connection =
+                        new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        connection.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    exception = ex;
+                    result = false;
+                }
+
+                exception = null;
+            }
+            return result;
         }
     }
 }

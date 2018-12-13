@@ -64,7 +64,7 @@
   <Class Name="Makh.Timesheet.DatabaseProvider">
     <Position X="2.25" Y="0.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>gAAAABAEAAAAAAAAAAAAAAAAAhACAAAAAIQAABAAAAA=</HashCode>
+      <HashCode>gAAAABAEAAAAAAAAAAAAAAQABhACAABAAIQAABJAAAA=</HashCode>
       <FileName>DatabaseProvider.cs</FileName>
     </TypeIdentifier>
   </Class>
