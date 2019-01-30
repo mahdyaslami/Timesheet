@@ -19,15 +19,15 @@ namespace Makh.Timesheet
 
         private void Main_Load(object sender, EventArgs e)
         {
-            // نمایش نام کاربری بالای پنجره اول - اصلی
-            this.Text = string.Format(
-                Properties.Settings.Default.MainTextPattern,
-                Program.Username);
+            RefreshSettingAndAppearance();
         }
 
         private void connectionSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            (new ConnectionSettingDialog()).ShowDialog(this);
+            if ((new ConnectionSettingDialog()).ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            {
+                RefreshSettingAndAppearance();
+            }
         }
 
         private void groupsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -36,27 +36,80 @@ namespace Makh.Timesheet
         }
 
         /// <summary>
-        /// بررسی اتصال به پایگاه داده
+        /// تنظیمات را لود می کند و در صورت بروز خطا پیام مناسب را نمایش می دهد
         /// </summary>
         /// <remarks>
-        /// بررسی می کند اگر اتصال به سرور وجود داشت در بالای نام می نویسد انلاین در غیر این صورت می نویسد افلاین
-        /// سپس بررسی می کند آیا اتصال به فایل وجود دارد اگر وجود داشت که هیچ درغیر این صورت خطا پرتاب می کند و  از کاربر می خواهد که فایل درست را از منو کانکشن استرین انتخاب کند
+        /// تنظیمات پایگاه داده را می خواند و اعمال می کند
         /// </remarks>
-        public void TestConnection()
+        private void LoadSetting()
         {
-            throw new System.NotImplementedException();
-        }
-
-        private void SetSetting()
-        {
-            if (string.IsNullOrWhiteSpace(
-                Properties.Settings.Default.Filename))
+            try
             {
-                DatabaseProvider.SetFileConnectionString(
-                    Properties.Settings.Default.Filename);
+                if (string.IsNullOrWhiteSpace(
+                    Properties.Settings.Default.DBFilename) == false)
+                {
+                    DatabaseProvider.SetFileConnectionString(
+                        Properties.Settings.Default.DBFilename);
+                }
+            }
+            catch
+            {
+                MessageBox.Show(
+                    Properties.Resources.ReturnFileSettingToDefault
+                    , Properties.Resources.MsgBoxCaption
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Exclamation);
+                DatabaseProvider.SetFileConnectionStringToDefault();
             }
 
-            
+            try
+            {
+                if (string.IsNullOrWhiteSpace(
+                        Properties.Settings.Default.ServerAddress) == false)
+                {
+                    if (string.IsNullOrWhiteSpace(
+                            Properties.Settings.Default.UserId)
+                        || string.IsNullOrWhiteSpace(
+                            Properties.Settings.Default.Password))
+                    {
+                        DatabaseProvider.SetServerConnectionString(
+                            Properties.Settings.Default.ServerAddress,
+                            Properties.Settings.Default.DatabaseName);
+                    }
+                    else
+                    {
+                        DatabaseProvider.SetServerConnectionString(
+                            Properties.Settings.Default.ServerAddress,
+                            Properties.Settings.Default.DatabaseName,
+                            Properties.Settings.Default.UserId,
+                            Properties.Settings.Default.Password);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show(
+                    Properties.Resources.ReturnServerSettingToDefault
+                    , Properties.Resources.MsgBoxCaption
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Exclamation);
+                DatabaseProvider.RemoveServerConnectionString();
+            }
+        }
+
+        /// <summary>
+        /// تنظیمات را دوباره می خواند و اعمال می کند 
+        /// و ظاهر را بر اساس تنظمیات جدید بروزرسانی می کند
+        /// </summary>
+        private void RefreshSettingAndAppearance()
+        {
+            LoadSetting();
+
+            // نمایش نام کاربری بالای پنجره اول - اصلی
+            this.Text = string.Format(
+                Properties.Settings.Default.MainTextPattern,
+                Program.Username,
+                DatabaseProvider.HasServer ? Properties.Resources.ONLINE : Properties.Resources.OFFLINE);
         }
     }
 }

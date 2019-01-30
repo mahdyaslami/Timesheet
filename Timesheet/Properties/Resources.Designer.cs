@@ -70,6 +70,15 @@ namespace Makh.Timesheet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to نام پایگاده داده وارد نشده است.
+        /// </summary>
+        internal static string DatabaseIsNotEntered {
+            get {
+                return ResourceManager.GetString("DatabaseIsNotEntered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ابتدا باید یک فایل پایگاه داده انتخاب شود سپس اتصال برسی گردد.
         /// </summary>
         internal static string DBFileIsNotSelected {
@@ -84,6 +93,15 @@ namespace Makh.Timesheet.Properties {
         internal static string FilenameCantBeNullOrEmpty {
             get {
                 return ResourceManager.GetString("FilenameCantBeNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to فایلی با این نام پیدا نشد.
+        /// </summary>
+        internal static string FileNotFound {
+            get {
+                return ResourceManager.GetString("FileNotFound", resourceCulture);
             }
         }
         
@@ -268,11 +286,56 @@ namespace Makh.Timesheet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to افلاین.
+        /// </summary>
+        internal static string OFFLINE {
+            get {
+                return ResourceManager.GetString("OFFLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to آنلاین.
+        /// </summary>
+        internal static string ONLINE {
+            get {
+                return ResourceManager.GetString("ONLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to پسورد وارد نشده است.
+        /// </summary>
+        internal static string PasswordIsNotEntered {
+            get {
+                return ResourceManager.GetString("PasswordIsNotEntered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لطفا، یک عنوان برای گروه جدید وارد کنید:.
         /// </summary>
         internal static string PlzTypeGroupName {
             get {
                 return ResourceManager.GetString("PlzTypeGroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to به علت بروز خطا تنظیمات فایل پایگاه داده به پیشفرش تغییر کرد جهت بررسی به تنظیمات کاننکشن استرین مراجعه کنید.
+        /// </summary>
+        internal static string ReturnFileSettingToDefault {
+            get {
+                return ResourceManager.GetString("ReturnFileSettingToDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to به علت بروز خطا تنظیمات سرور پایگاه داده به پیشفرض تغییر پیدا کرد لطفا جهت بررسی بیشتر به تنظیمات کاننکشن استرینگ مراجعه کنید.
+        /// </summary>
+        internal static string ReturnServerSettingToDefault {
+            get {
+                return ResourceManager.GetString("ReturnServerSettingToDefault", resourceCulture);
             }
         }
         
@@ -295,11 +358,11 @@ namespace Makh.Timesheet.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to نام سرور و نام پایگاده داده وارد نشده است.
+        ///   Looks up a localized string similar to نام سرور وارد نشده است.
         /// </summary>
-        internal static string ServerAndDatabaseIsNotEntered {
+        internal static string ServerAddressIsNotEntered {
             get {
-                return ResourceManager.GetString("ServerAndDatabaseIsNotEntered", resourceCulture);
+                return ResourceManager.GetString("ServerAddressIsNotEntered", resourceCulture);
             }
         }
         
@@ -313,11 +376,11 @@ namespace Makh.Timesheet.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to آی دی کاربر و پسورد وارد نشده است.
+        ///   Looks up a localized string similar to آی دی کاربر وارد نشده است.
         /// </summary>
-        internal static string UserIDAndPasswordIsNotEntered {
+        internal static string UserIDIsNotEntered {
             get {
-                return ResourceManager.GetString("UserIDAndPasswordIsNotEntered", resourceCulture);
+                return ResourceManager.GetString("UserIDIsNotEntered", resourceCulture);
             }
         }
     }

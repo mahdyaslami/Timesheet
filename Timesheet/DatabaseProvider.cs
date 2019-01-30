@@ -23,12 +23,16 @@ namespace Makh.Timesheet
         private static string fileConnectionString;
         private static bool isDefaultFileUsed;
         private static string serverConnectionString;
-        private static bool hasServer;
+        public static bool HasServer
+        {
+            get;
+            private set;
+        }
         static DatabaseProvider()
         {
             fileConnectionString = string.Empty;
             isDefaultFileUsed = true;
-            hasServer = false;
+            HasServer = false;
         }
 
         /// <summary>
@@ -105,12 +109,13 @@ namespace Makh.Timesheet
         {
             if (string.IsNullOrEmpty(filename))
             {
-                throw new ArgumentNullException(
+                throw new ArgumentNullException("filename",
                     Properties.Resources.FilenameCantBeNullOrEmpty);
             }
             else if (File.Exists(filename) == false)
             {
-                throw new FileNotFoundException();
+                throw new FileNotFoundException(
+                    Properties.Resources.FileNotFound);
             }
 
             return string.Format(
@@ -300,7 +305,7 @@ namespace Makh.Timesheet
             if (TestConnectonString(connectionString, out exception))
             {
                 serverConnectionString = connectionString;
-                hasServer = true;
+                HasServer = true;
             }
             else
             {
@@ -325,7 +330,7 @@ namespace Makh.Timesheet
             if (TestConnectonString(connectionString, out exception))
             {
                 serverConnectionString = connectionString;
-                hasServer = true;
+                HasServer = true;
             }
             else
             {
@@ -345,13 +350,17 @@ namespace Makh.Timesheet
             string database, string userId, string password)
         {
             if (string.IsNullOrWhiteSpace(server))
-                throw new ArgumentNullException("server");
+                throw new ArgumentNullException("server",
+                    Properties.Resources.ServerAddressIsNotEntered);
             else if (string.IsNullOrWhiteSpace(database))
-                throw new ArgumentNullException("database");
+                throw new ArgumentNullException("database",
+                    Properties.Resources.DatabaseIsNotEntered);
             else if (string.IsNullOrWhiteSpace(userId))
-                throw new ArgumentNullException("userId");
+                throw new ArgumentNullException("userId",
+                    Properties.Resources.UserIDIsNotEntered);
             else if (string.IsNullOrWhiteSpace(password))
-                throw new ArgumentNullException("password");
+                throw new ArgumentNullException("password",
+                    Properties.Resources.PasswordIsNotEntered);
 
             return string.Format(
                 Properties.Settings.Default.CustomServerConnectionStringWithAthentication,
@@ -367,9 +376,11 @@ namespace Makh.Timesheet
             string database)
         {
             if (string.IsNullOrWhiteSpace(server))
-                throw new ArgumentNullException("server");
+                throw new ArgumentNullException("server",
+                    Properties.Resources.ServerAddressIsNotEntered);
             else if (string.IsNullOrWhiteSpace(database))
-                throw new ArgumentNullException("database");
+                throw new ArgumentNullException("database",
+                    Properties.Resources.DatabaseIsNotEntered);
 
             return string.Format(
                 Properties.Settings.Default.CustomServerConnectionString,
@@ -386,6 +397,7 @@ namespace Makh.Timesheet
         private static bool TestConnectonString(string connectionString, out Exception exception)
         {
             bool result = true;
+            exception = null;
 
             if (string.IsNullOrWhiteSpace(connectionString))
             {
@@ -408,10 +420,18 @@ namespace Makh.Timesheet
                     exception = ex;
                     result = false;
                 }
-
-                exception = null;
             }
+
             return result;
+        }
+
+        /// <summary>
+        /// تنظمیات کاننکشن استرینگ سرور را حذف می کند
+        /// </summary>
+        public static void RemoveServerConnectionString()
+        {
+            serverConnectionString = string.Empty;
+            HasServer = false;
         }
     }
 }

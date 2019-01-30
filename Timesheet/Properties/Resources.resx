@@ -120,6 +120,9 @@
   <data name="AddingRestrictionOfMotafareqehGroup" xml:space="preserve">
     <value>امکان اضافه کردن گروه در بالای گروه متفرقه و یا به عنوان فرزند آن وجود ندارد فقط می توان در پایین گروه متفرقه گروه اضافه کرد</value>
   </data>
+  <data name="DatabaseIsNotEntered" xml:space="preserve">
+    <value>نام پایگاده داده وارد نشده است</value>
+  </data>
   <data name="DBFileIsNotSelected" xml:space="preserve">
     <value>ابتدا باید یک فایل پایگاه داده انتخاب شود سپس اتصال برسی گردد</value>
   </data>
@@ -186,6 +189,9 @@
   <data name="NoRowSelected" xml:space="preserve">
     <value>برای اضافه کردن گروه باید حداقل یک سطر را انتخاب شود و سپس گزینه مناسب جهت اضافه شدن گروه زده شود</value>
   </data>
+  <data name="PasswordIsNotEntered" xml:space="preserve">
+    <value>پسورد وارد نشده است</value>
+  </data>
   <data name="PlzTypeGroupName" xml:space="preserve">
     <value>لطفا، یک عنوان برای گروه جدید وارد کنید:</value>
   </data>
@@ -195,13 +201,28 @@
   <data name="RowNumberColumnWidth" xml:space="preserve">
     <value>50</value>
   </data>
-  <data name="ServerAndDatabaseIsNotEntered" xml:space="preserve">
-    <value>نام سرور و نام پایگاده داده وارد نشده است</value>
+  <data name="ServerAddressIsNotEntered" xml:space="preserve">
+    <value>نام سرور وارد نشده است</value>
   </data>
   <data name="TestConnectionSucceeded" xml:space="preserve">
     <value>اتصال با موفقیت بررسی شد</value>
   </data>
-  <data name="UserIDAndPasswordIsNotEntered" xml:space="preserve">
-    <value>آی دی کاربر و پسورد وارد نشده است</value>
+  <data name="UserIDIsNotEntered" xml:space="preserve">
+    <value>آی دی کاربر وارد نشده است</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>فایلی با این نام پیدا نشد</value>
+  </data>
+  <data name="ReturnFileSettingToDefault" xml:space="preserve">
+    <value>به علت بروز خطا تنظیمات فایل پایگاه داده به پیشفرش تغییر کرد جهت بررسی به تنظیمات کاننکشن استرین مراجعه کنید</value>
+  </data>
+  <data name="ReturnServerSettingToDefault" xml:space="preserve">
+    <value>به علت بروز خطا تنظیمات سرور پایگاه داده به پیشفرض تغییر پیدا کرد لطفا جهت بررسی بیشتر به تنظیمات کاننکشن استرینگ مراجعه کنید</value>
+  </data>
+  <data name="OFFLINE" xml:space="preserve">
+    <value>افلاین</value>
+  </data>
+  <data name="ONLINE" xml:space="preserve">
+    <value>آنلاین</value>
   </data>
 </root>

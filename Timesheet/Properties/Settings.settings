@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Makh.Timesheet.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DBFilename" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="TimesheetConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
@@ -17,7 +14,7 @@
       <Value Profile="(Default)">Data Source=(LocalDB)\v11.0;AttachDbFilename={0};Integrated Security=True;Connect Timeout=30</Value>
     </Setting>
     <Setting Name="MainTextPattern" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Timesheet - &lt;{0}&gt;</Value>
+      <Value Profile="(Default)">Timesheet - &lt;{0}&gt; - {1}</Value>
     </Setting>
     <Setting Name="MotefareqehID" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">1</Value>
@@ -46,7 +43,19 @@
     <Setting Name="CustomServerConnectionString" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Server={0};Database={1};Trusted_Connection=True;</Value>
     </Setting>
-    <Setting Name="Filename" Type="System.String" Scope="User">
+    <Setting Name="DBFilename" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ServerAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DatabaseName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UserId" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

@@ -39,7 +39,7 @@
             this.passwordLabel = new System.Windows.Forms.Label();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
-            this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.userIdTextBox = new System.Windows.Forms.TextBox();
             this.isUserPasswordNeedCheckBox = new System.Windows.Forms.CheckBox();
             this.databaseNameLabel = new System.Windows.Forms.Label();
             this.databaseNameTextBox = new System.Windows.Forms.TextBox();
@@ -128,7 +128,7 @@
             this.serverTabPage.Controls.Add(this.passwordLabel);
             this.serverTabPage.Controls.Add(this.passwordTextBox);
             this.serverTabPage.Controls.Add(this.usernameLabel);
-            this.serverTabPage.Controls.Add(this.usernameTextBox);
+            this.serverTabPage.Controls.Add(this.userIdTextBox);
             this.serverTabPage.Controls.Add(this.isUserPasswordNeedCheckBox);
             this.serverTabPage.Controls.Add(this.databaseNameLabel);
             this.serverTabPage.Controls.Add(this.databaseNameTextBox);
@@ -181,13 +181,13 @@
             this.usernameLabel.TabIndex = 7;
             this.usernameLabel.Text = "نام کاربری:";
             // 
-            // usernameTextBox
+            // userIdTextBox
             // 
-            this.usernameTextBox.Enabled = false;
-            this.usernameTextBox.Location = new System.Drawing.Point(135, 139);
-            this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(150, 27);
-            this.usernameTextBox.TabIndex = 6;
+            this.userIdTextBox.Enabled = false;
+            this.userIdTextBox.Location = new System.Drawing.Point(135, 139);
+            this.userIdTextBox.Name = "userIdTextBox";
+            this.userIdTextBox.Size = new System.Drawing.Size(150, 27);
+            this.userIdTextBox.TabIndex = 6;
             // 
             // isUserPasswordNeedCheckBox
             // 
@@ -289,6 +289,7 @@
             this.Name = "ConnectionSettingDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ConnectionSetting";
+            this.Load += new System.EventHandler(this.ConnectionSettingDialog_Load);
             this.tabControl.ResumeLayout(false);
             this.fileTabPage.ResumeLayout(false);
             this.fileTabPage.PerformLayout();
@@ -312,7 +313,7 @@
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Label usernameLabel;
-        private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.TextBox userIdTextBox;
         private System.Windows.Forms.CheckBox isUserPasswordNeedCheckBox;
         private System.Windows.Forms.Label databaseNameLabel;
         private System.Windows.Forms.TextBox databaseNameTextBox;

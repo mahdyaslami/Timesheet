@@ -254,7 +254,8 @@ namespace Makh.Timesheet
         {
             // 1-1- در صورت خالی بودن نام اکسپشن پرتاب می کند
             if (string.IsNullOrWhiteSpace(title))
-                throw new ArgumentNullException("title");
+                throw new ArgumentNullException("title",
+                    Properties.Resources.GroupNameCanntBeEmpty);
 
             // 2-1- در صورتی که بخواهد به فرزندان گروه "متفرقه" و یا بالای آن اضافه کند اکسپشن پرتاب می کند
             if (groupsDataGridView.SelectedRows.Count == 0)
